@@ -3,17 +3,17 @@
 var templates = require('./');
 var Base = require('base');
 
-// function App() {
-//   Base.call(this);
-//   this.is('app');
-//   this.use(templates());
-// }
-// Base.extend(App);
+function App() {
+  Base.call(this);
+  this.is('app');
+  this.use(templates());
+}
+Base.extend(App);
 
-// var app = new App();
-var app = new Base();
-app.is('app');
-app.use(templates());
+var app = new App();
+// var app = new Base();
+// app.is('app');
+// app.use(templates());
 
 app.engine('hbs', require('engine-handlebars'));
 app.create('pages');
