@@ -1,6 +1,6 @@
 # base-templates [![NPM version](https://img.shields.io/npm/v/base-templates.svg?style=flat)](https://www.npmjs.com/package/base-templates) [![NPM downloads](https://img.shields.io/npm/dm/base-templates.svg?style=flat)](https://npmjs.org/package/base-templates) [![Build Status](https://img.shields.io/travis/node-base/base-templates.svg?style=flat)](https://travis-ci.org/node-base/base-templates)
 
-> Plugin for adding templates support to base applications.
+> Plugin for adding Templates support to base applications.
 
 ## Install
 
@@ -12,8 +12,13 @@ $ npm install base-templates --save
 
 ## Usage
 
+**WIP! Not ready for production!**
+
 ```js
-var baseTemplates = require('base-templates');
+var templates = require('base-templates');
+var Base = require('base');
+var app = new Base();
+app.use(templates());
 ```
 
 ## Contributing
@@ -22,13 +27,13 @@ Pull requests and stars are always welcome. For bugs and feature requests, [plea
 
 ## Building docs
 
-Generate readme and API documentation with [verb][]:
+Generate readme and API documentation with [verb](https://github.com/verbose/verb):
 
 ```sh
 $ npm install verb && npm run docs
 ```
 
-Or, if [verb][] is installed globally:
+Or, if [verb](https://github.com/verbose/verb) is installed globally:
 
 ```sh
 $ verb

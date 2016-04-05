@@ -1,6 +1,6 @@
 {
   "name": "base-templates",
-  "description": "Plugin for adding templates support to base applications.",
+  "description": "Plugin for adding Templates support to base applications.",
   "version": "0.1.0",
   "homepage": "https://github.com/node-base/base-templates",
   "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
