@@ -22,10 +22,11 @@ module.exports = function(config, fn) {
 
     // original constructor reference
     var Ctor = this.constructor;
-    this.options = utils.merge({}, config, this.options);
+    var opts = this.options = utils.merge({}, config, this.options);
+
     Templates.extend(Ctor);
     Templates.bubble(Ctor);
-    Templates.call(this, this.options);
+    Templates.call(this, opts);
     Templates.debug(this);
 
     // restore original constructor
