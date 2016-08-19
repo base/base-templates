@@ -9,6 +9,7 @@ require = utils;
  */
 
 require('define-property', 'define');
+require('is-valid-app', 'isValid');
 require('mixin-deep', 'merge');
 require('templates', 'Templates');
 require = fn;

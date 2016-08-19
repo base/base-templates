@@ -1,35 +1,22 @@
 'use strict';
 
-require('mocha');
-var assert = require('assert');
-var templates = require('./');
+var opts = {alias: {pattern: 'p'}};
+var argv = require('yargs-parser')(process.argv.slice(2), opts);
+var runner = require('base-test-runner')(argv);
+var suite = require('base-test-suite');
 var Base = require('base');
-var app;
+var templates = require('./');
+var app = new Base({isApp: true});
+app.use(templates());
 
-describe('base-templates', function() {
-  beforeEach(function() {
-    app = new Base();
-    app.use(templates());
-  });
-  
-  it('should export a function', function() {
-    assert.equal(typeof templates, 'function');
-  });
+console.log(app.views)
 
-  it('should export an object', function() {
-    assert(templates);
-    assert.equal(typeof templates, 'object');
-  });
+/**
+ * Run the tests in `base-test-suite`
+ */
 
-  it('should throw an error when invalid args are passed', function(cb) {
-    try {
-      templates();
-      cb(new Error('expected an error'));
-    } catch (err) {
-      assert(err);
-      assert.equal(err.message, 'expected first argument to be a string');
-      assert.equal(err.message, 'expected callback to be a function');
-      cb();
-    }
-  });
-});
+// runner.on('templates', function(file) {
+//   require(file.path)(app);
+// });
+
+// runner.addFiles('templates', suite.test.templates);

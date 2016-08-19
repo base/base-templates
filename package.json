@@ -11,6 +11,8 @@
   "license": "MIT",
   "files": [
     "index.js",
+    "LICENSE",
+    "README.md",
     "utils.js"
   ],
   "main": "index.js",
@@ -22,24 +24,42 @@
   },
   "dependencies": {
     "define-property": "^0.2.5",
-    "lazy-cache": "^1.0.3",
+    "is-valid-app": "^0.2.0",
+    "lazy-cache": "^2.0.1",
     "mixin-deep": "^1.1.3",
-    "templates": "^0.16.1"
+    "templates": "^0.24.0"
   },
   "devDependencies": {
-    "base": "^0.8.1",
+    "base": "^0.11.1",
+    "base-test-runner": "^0.2.0",
+    "base-test-suite": "^0.1.12",
     "engine-handlebars": "^0.8.0",
-    "gulp-format-md": "^0.1.7",
-    "mocha": "^2.4.5"
+    "gulp-format-md": "^0.1.9",
+    "yargs-parser": "^2.4.0"
   },
-  "keywords": [],
+  "keywords": [
+    "api",
+    "app",
+    "application",
+    "base",
+    "baseplugin",
+    "building-blocks",
+    "create",
+    "framework",
+    "plugin",
+    "plugins",
+    "templates",
+    "tool",
+    "toolkit",
+    "tools"
+  ],
   "lintDeps": {
     "ignore": []
   },
   "verb": {
     "run": true,
     "toc": false,
-    "layout": "default",
+    "layout": false,
     "tasks": [
       "readme"
     ],
