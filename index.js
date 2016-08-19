@@ -21,6 +21,13 @@ module.exports = function(options) {
     ctor.inherit(ctor, utils.Templates);
     this.define('isTemplates', true);
 
+    // Object.assign(this, utils.Templates.prototype);
+    for (var key in utils.Templates.prototype) {
+      if (utils.Templates.prototype.hasOwnProperty(key)) {
+        this.define(key, utils.Templates.prototype[key]);
+      }
+    }
+
     // initialize Templates defaults (loads plugins, etc)
     utils.Templates.prototype.initTemplates.call(this);
 
