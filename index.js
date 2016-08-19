@@ -7,34 +7,40 @@
 
 'use strict';
 
-var util = require('util');
 var utils = require('./utils');
 
-module.exports = function templates(config, fn) {
-  if (typeof config === 'function') {
-    fn = config;
-    config = {};
-  }
-
-  return function plugin(app) {
+module.exports = function(options) {
+  return function fn(app) {
     if (!utils.isValid(app, 'base-templates')) return;
-    var Templates = utils.Templates;
+    var ctor = this.constructor;
 
-    // original constructor reference
-    var Ctor = this.constructor;
-    var self = this;
-    function App() {
-      Ctor.apply(this, arguments);
-      console.log(this)
+    this.use(utils.plugins());
+    this.use(utils.option());
+
+    // inherit templates
+    ctor.inherit(ctor, utils.Templates);
+    this.define('isTemplates', true);
+
+    // initialize Templates defaults (loads plugins, etc)
+    utils.Templates.prototype.initTemplates.call(this);
+
+    // add options defined on this plugin
+    if (utils.isPlainObject(options)) {
+      this.option(options || {});
     }
 
-    Templates.call(this, utils.merge(this.options, config));
-    this.visit('define', Templates.prototype);
-    Templates.extend(App);
-    Templates.bubble(App);
-
-    // restore original constructor
-    utils.define(this, 'constructor', App);
-    return plugin;
+    // return the plugin fn to ensure it gets
+    // loaded onto child instances
+    return fn;
   };
 };
+
+/**
+ * Lazily expose `Templates`
+ */
+
+Object.defineProperty(module.exports, 'Templates', {
+  get: function() {
+    return utils.Templates;
+  }
+});

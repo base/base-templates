@@ -8,9 +8,10 @@ require = utils;
  * Lazily required module dependencies
  */
 
-require('define-property', 'define');
+require('base-option', 'option');
+require('base-plugins', 'plugins');
+require('is-plain-object');
 require('is-valid-app', 'isValid');
-require('mixin-deep', 'merge');
 require('templates', 'Templates');
 require = fn;
 
